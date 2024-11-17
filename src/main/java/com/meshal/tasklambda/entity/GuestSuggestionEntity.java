@@ -1,5 +1,6 @@
 package com.meshal.tasklambda.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,11 +13,11 @@ public class GuestSuggestionEntity {
     @GeneratedValue
     private Long id;
 
-    private int rate;
     private String suggestionText;
+    private int rate;
 
-    public GuestSuggestionEntity(int rate, String suggestionText) {
-        this.rate = rate;
+    public GuestSuggestionEntity(String suggestionText, int rate) {
         this.suggestionText = suggestionText;
+        this.rate = rate;
     }
 }

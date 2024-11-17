@@ -8,4 +8,5 @@ import lombok.*;
 @Setter
 public class CreateSuggestionRequest {
     private String text;
+    private int rate;
 }

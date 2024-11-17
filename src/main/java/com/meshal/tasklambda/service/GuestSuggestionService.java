@@ -1,12 +1,10 @@
 package com.meshal.tasklambda.service;
 
 import com.meshal.tasklambda.bo.CreateSuggestionRequest;
-import com.meshal.tasklambda.bo.SuggestionResponse;
 import com.meshal.tasklambda.entity.GuestSuggestionEntity;
+import com.meshal.tasklambda.functional.SuggestionProcessor;
 import com.meshal.tasklambda.repository.GuestSuggestionRepository;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,13 +24,13 @@ public class GuestSuggestionService {
         this.guestSuggestionRepository = guestSuggestionRepository;
     }
 
-    final SuggestionProcessor processSuggestion = ((text) -> {
-        GuestSuggestionEntity suggestion = new GuestSuggestionEntity(1, text);
+    final SuggestionProcessor processSuggestion = ((text, rate) -> {
+        GuestSuggestionEntity suggestion = new GuestSuggestionEntity(text, rate);
         guestSuggestionRepository.save(suggestion);
     });
 
     public void printAndProcessSuggestion(CreateSuggestionRequest request) {
-        processSuggestion.process(request.getText());
+        processSuggestion.process(request.getText(), request.getRate());
         System.out.println(request.getText());
     }
 
