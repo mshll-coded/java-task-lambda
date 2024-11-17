@@ -2,5 +2,5 @@ package com.meshal.tasklambda.functional;
 
 @FunctionalInterface
 public interface SuggestionProcessor {
-    public void process(String text, int rate);
+    public void process(String text, int rate, String status);
 }

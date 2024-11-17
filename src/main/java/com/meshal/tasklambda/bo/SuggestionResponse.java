@@ -1,10 +1,11 @@
 package com.meshal.tasklambda.bo;
 
+import com.meshal.tasklambda.entity.GuestSuggestionEntity;
 import lombok.*;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 public class SuggestionResponse {
-    private String text;
-    private int rate;
+    private String message;
+    private CreateSuggestionRequest suggestion;
 }

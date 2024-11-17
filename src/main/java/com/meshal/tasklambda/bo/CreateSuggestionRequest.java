@@ -9,4 +9,5 @@ import lombok.*;
 public class CreateSuggestionRequest {
     private String text;
     private int rate;
+    private String status;
 }
